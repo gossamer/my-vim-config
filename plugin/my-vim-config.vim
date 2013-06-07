@@ -1,5 +1,7 @@
 " Preferred color scheme.
 colorscheme twilight
+" Set the ColorColumn highlight to match.
+highlight ColorColumn ctermbg=darkgrey guibg=#303030
 
 " Allow for mouse input even in a console context.
 set mouse=a
@@ -94,8 +96,10 @@ autocmd BufWinEnter *
       \ call matchadd('Attention', '\s\+$', -1) |
 
 " Mark lines too long.
-autocmd BufWinEnter *
-      \ call matchadd('Attention', '\%>80v.\+', -1)
+"autocmd BufWinEnter *
+"      \ call matchadd('Attention', '\%>80v.\+', -1)
+execute "set colorcolumn=" . join(range(81,335), ',')
+      
 
 " Mark English contraction use, such as in <don't> and <let's>
 autocmd BufWinEnter *
@@ -145,7 +149,7 @@ set history=200
 " Set viminfo to:
 "   + Save 100 marks (')
 "   + Save 100 searches (/)
-"   + Save 100 commands (:0)
+"   + Save 100 commands (:)
 "   + Save 50 lines for each register (<)
 "   + Do not highlight the last search on load (h)
 "   + Save global variables beginning with uppercase (!)
