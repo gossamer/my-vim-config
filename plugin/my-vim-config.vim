@@ -99,6 +99,8 @@ autocmd BufWinEnter *
 "autocmd BufWinEnter *
 "      \ call matchadd('Attention', '\%>80v.\+', -1)
 execute "set colorcolumn=" . join(range(81,335), ',')
+autocmd BufWinEnter *
+      \ highlight ColorColumn ctermbg=darkgrey guibg=#303030
 
 " Mark English contraction use, such as in <don't> and <let's>
 autocmd BufWinEnter *
