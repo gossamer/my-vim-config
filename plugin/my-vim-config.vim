@@ -89,7 +89,9 @@ else
 endif
 
 " Define a color for things needing attention.
-highlight Attention ctermfg=darkgrey guifg=#552222
+"highlight Attention ctermbg=DarkRed guibg=#552222
+highlight Attention ctermfg=White ctermbg=DarkRed guifg=Yellow guisp=#ff6600
+      \ guibg=#773300
 
 " Mark trailing whitespace.
 autocmd BufWinEnter *
@@ -98,13 +100,20 @@ autocmd BufWinEnter *
 " Mark lines too long.
 "autocmd BufWinEnter *
 "      \ call matchadd('Attention', '\%>80v.\+', -1)
-execute "set colorcolumn=" . join(range(81,335), ',')
+autocmd BufWinEnter *
+      \ execute "set colorcolumn=" . join(range(81,335), ',')
+autocmd BufWinEnter *.java
+      \ execute "set colorcolumn=" . join(range(101,335), ',')
 autocmd BufWinEnter *
       \ highlight ColorColumn ctermbg=darkgrey guibg=#303030
 
 " Mark English contraction use, such as in <don't> and <let's>
 autocmd BufWinEnter *
       \ call matchadd('Attention', "\\w\\+\\(n't\\|'s\\)", -1)
+
+" Mark 'FIXME'
+autocmd BufWinEnter *
+      \ call matchadd('Attention', "FIXME", -1)
 
 " Mark periods not followed by two spaces.
 autocmd FileType markdown
