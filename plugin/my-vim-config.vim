@@ -116,7 +116,7 @@ autocmd BufWinEnter *
       \ call matchadd('Attention', "FIXME", -1)
 
 " Mark periods not followed by two spaces.
-autocmd FileType markdown
+autocmd BufWinEnter *.md
       \ call matchadd('Attention', "\\w\\+\\.\\s\\w\\+", -1)
 
 " ---------------------------------------------------------------------------
